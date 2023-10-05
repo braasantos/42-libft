@@ -1,25 +1,38 @@
 ##VARIAVEIS
 NAME = libft.a
-SRCS = ft_isdigit.c ft_strlen.c ft_isalpha.c ft_isascii.c \
- ft_isprint.c ft_isalnum.c ft_toupper.c ft_tolower.c \
- ft_atoi.c ft_strncmp.c ft_strlcat.c
-OBJS = $(SRCS:.c=.o)
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra -I.
-COMPLIER = $(CC) $(CFLAGS)
-RM = rm -f
 
-##MAKEFILE
-all: $(NAME)
+SRCS = ft_isdigit.c \
+	ft_strlen.c \
+	ft_isalpha.c \
+	ft_isascii.c \
+ 	ft_isprint.c \
+ 	ft_isalnum.c \
+ 	ft_toupper.c \
+ 	ft_tolower.c \
+ 	ft_atoi.c \
+ 	ft_strncmp.c \
+ 	ft_strlcat.c
+
+OBJS = $(SRCS:.c=.o)
+
+CC = gcc
+
+CFLAGS = -Wall -Werror -Wextra 
+
+COMPLIER = $(CC) $(CFLAGS)
+
+RM = rm -f
 
 ##$(NAME): $(OBJS)
 ##	$(COMPLIER) main.c $(OBJS)
+%.o : %.c 
+	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
+	cc main.c $(NAME)
 
-##%.o: %.c
-##	$(COMPLIER) -c $^ -o $@
+all: $(NAME)
 
 clean:
 	$(RM) $(OBJS)
@@ -27,8 +40,7 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re: fclean
-	$(MAKE) all
+re: fclean all
 
 .PHONY: all clean fclean re
 .SILENT:
