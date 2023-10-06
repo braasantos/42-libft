@@ -1,21 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bjorge-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/06 18:47:26 by bjorge-m          #+#    #+#             */
+/*   Updated: 2023/10/06 18:48:19 by bjorge-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 //Verifica a ultima occorencia de um caracter dentro de uma string
-char *ft_strrchr(const char *str, int c)
+char *ft_strrchr(const char *s, int c)
 {
-  int i;
-  const char *ptr;
-
-  i = 0;
-  ptr = NULL;
-  while (str[i])
+	const char *ptr;
+	
+	ptr = NULL;
+	while (*s)
+	{
+		if (*s == (char)c)
+		{
+			ptr = s; //atribuimos esse endereço ao ptr 
+		}
+		s++;
+	}
+	if ((char)c == *s)
+		return (char *)s; // Handle null terminator if 'c' is '\0'
+  /*if (ptr == NULL)
   {
-    if (str[i] == c)
-    {
-      ptr = &str[i]; //atribuimos esse endereço ao ptr 
-    }
-    i++;
-  }
-  return (char *)ptr; //temos que fazer essa conversao para que o compilador aceite de const char * para char *
+    return (NULL);
+  }*/
+	else
+		return ((char *)ptr); //temos que fazer essa conversao para que o compilador aceite de const char * para char *
 }
 
 /*int main(void)
@@ -30,10 +47,10 @@ char *ft_strrchr(const char *str, int c)
   return (0);
 }*/
 
-int main(void)
+/*int main(void)
 {
-  const char *str = "brauliobdossantsosb";
-  int c = 'b';
+  const char *str = "braulio";
+  int c = '\0';
   char *result = ft_strrchr(str, c);
   if (result != NULL)
   {
@@ -46,4 +63,4 @@ int main(void)
     printf("Not found\n");
   }
   return (0);
-}
+}*/

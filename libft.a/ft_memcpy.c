@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bjorge-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/06 18:40:43 by bjorge-m          #+#    #+#             */
+/*   Updated: 2023/10/06 18:41:16 by bjorge-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void *ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t i;
 	unsigned char *ptr = dest;
@@ -10,15 +22,17 @@ void *ft_memcpy(void *dest, const void *src, size_t n)
  	copying works correctly in all cases,
   especially when copying binary data.*/
 	i = 0;
+	if (!ptr && !ptr2)
+		return (0);
 	while (i < n)
 	{
 		ptr[i] = ptr2[i];
 		i ++;
 	}
-	return (ptr);
+	return (dest);
 }
 
-int main(void)
+/*int main(void)
 {
     char src[] = "Hello, World!";
     char dest1[20];
@@ -52,4 +66,4 @@ int main(void)
     }
 
     return 0;
-}
+}*/
