@@ -19,6 +19,11 @@ SRCS = ft_isdigit.c \
 	ft_strlcpy.c \
 	ft_bzero.c \
 	ft_strrchr.c \
+	ft_strchr.c \
+	ft_strnstr.c \
+	ft_strdup.c \
+	ft_strmapi.c \
+	ft_calloc.c \
 
 OBJS = $(SRCS:.c=.o)
 
