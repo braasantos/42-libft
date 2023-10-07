@@ -16,6 +16,7 @@ SRCS = ft_isdigit.c \
 	ft_memmove.c \
 	ft_memcmp.c \
 	ft_memcpy.c \
+	ft_memchr.c \
 	ft_strlcpy.c \
 	ft_bzero.c \
 	ft_strrchr.c \
@@ -24,6 +25,7 @@ SRCS = ft_isdigit.c \
 	ft_strdup.c \
 	ft_strmapi.c \
 	ft_calloc.c \
+	ft_itoa.c \
 
 OBJS = $(SRCS:.c=.o)
 

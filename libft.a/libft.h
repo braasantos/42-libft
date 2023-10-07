@@ -30,4 +30,5 @@ char *ft_strnstr(const char *s1, const char *s2, size_t n);
 char *ft_strdup(const char *s);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void *ft_calloc(size_t count, size_t size);
+char *ft_itoa(int n);
 #endif 
