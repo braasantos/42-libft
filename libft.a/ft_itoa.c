@@ -53,9 +53,9 @@ char *ft_itoa(int n)
   ptr[size] = '\0';
   return (ptr);
 }
-int main()
+/*int main()
 {
 	int	i = 0;
 	int	j = -2147483648;
 	printf("%s\n",ft_itoa(i));
-}
+}*/

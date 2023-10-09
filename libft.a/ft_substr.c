@@ -10,8 +10,11 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
   if (s == NULL)
     return (NULL);
   if (start > s_len)
-    len = 0;
+    len = 0; // len = 0 para indicar que nao vamos opiar nenhum caracter 
   if ( len > s_len - start)
+  // Se o valor de len for maior do que a quantidade de caracteres disponÃ­veis apÃ³s
+    // a posicao de inicio (start), reduzimos len para evitar copiar mais do que o
+    // disponÃ­vel.
   {
     len = s_len - start;
   }
