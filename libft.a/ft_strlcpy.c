@@ -6,7 +6,7 @@
 /*   By: bjorge-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:45:08 by bjorge-m          #+#    #+#             */
-/*   Updated: 2023/10/06 18:45:50 by bjorge-m         ###   ########.fr       */
+/*   Updated: 2023/10/10 17:47:45 by bjorge-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	size_t i;
-	
+	size_t	i;
+
 	i = 0;
 	if (size > 0)
 	{

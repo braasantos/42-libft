@@ -1,43 +1,57 @@
 #include "libft.h"
 
-static int ft_countsep(char const *s, char c)
+static int ft_countword(char const *s, char c)
 {
-  int i;
-  i = 0;
-  while (s[i] != '\0')
-  {
-    while (s[i] == c)
-      s++;
-    if (s[i] != '\0')
-      i++;
-    while (*s && *s != c)
-      s++;
-  }
-  return (i);
-}
-
-static size_t ft_countwords(char **new, char const *s, char c)
-{
-  char const *word;
-  char **newarr;
-  word = s;
-  newarr = new;
+  int flag;
+  int count;
+  flag = 0;
+  count = 0;
   while (*s)
   {
-    while (*s == c)
-      s++;
-      word = s;
-    if (*s && *s != c)
-      while (*s && *s != c)
-      s++;
-    if (word != s)
+    if (*s == c)
+      flag = 0;
+    else
     {
-      *newarr = ft_substr(word, 0, s - word);
-      word = s;
-      newarr++;
+      if (!flag)
+      {
+        count++;
+        flag = 1;
+      }
     }
+    s++;
   }
-  *newarr = NULL;
+  //printf("%i\n", count);
+  return (count);
+}
+
+static char **ft_putwords(char **new, char const *s, char c)
+{
+  char **newarr;
+  int flag;
+  int count;
+  newarr = new;
+  flag = 0;
+  count = 0;
+  while (*s)
+  {
+    if (*s == c)
+      flag = 0;
+    else
+    {
+      
+      if (!flag)
+      {
+        newarr[count] = ft_substr(s, 0, ft_strchr(s, c) - s);
+        if (!newarr[count])
+          return (NULL);
+        flag = 1;
+        count++;
+      }
+    }
+    s++;
+  }
+  newarr[count] = NULL;
+  return (newarr);
 }
 
 char **ft_split(char const *s, char c)
@@ -46,10 +60,29 @@ char **ft_split(char const *s, char c)
   int count;
   if (!s)
     return (NULL);
-  count = ft_countsep(s, c);
+  count = ft_countword(s, c);
   new_arr = (char **)malloc((count + 1)* sizeof(char *));
   if (!new_arr)
     return (NULL);
-  ft_countwords(new_arr, s, c);
+  ft_putwords(new_arr, s, c);
   return (new_arr);
 }
+
+/*int main(void)
+{
+    char const *s = "isso e um teste para ver se a split funciona";
+    char c = ' ';
+    
+    char **result = ft_split(s, c);
+ if (result) {
+        for (int i = 0; result[i] != NULL; i++) {
+            printf("array : %s\n", result[i]);
+            free(result[i]); // Liberar a memória alocada para cada palavra
+        }
+        free(result); // Liberar a memória alocada para o array de strings
+    } else {
+        // Trate a falha na alocação de memória aqui
+    }
+
+    return 0;
+}*/

@@ -12,7 +12,7 @@ int main(void)
   char l[] = "Santos";
   unsigned int z = 4;
   printf("%li\n", ft_strlcat(m, l, z));
-  printf("%i\n", ft_atoi(j));
+  printf("ATOI : %i\n", ft_atoi(j));
   printf("%d\n", ft_isalnum(h));
   printf("%i\n", ft_isprint(a));
   printf("%i\n", ft_isascii(a));

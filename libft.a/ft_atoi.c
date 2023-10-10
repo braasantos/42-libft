@@ -6,7 +6,7 @@
 /*   By: bjorge-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:33:55 by bjorge-m          #+#    #+#             */
-/*   Updated: 2023/10/06 18:34:44 by bjorge-m         ###   ########.fr       */
+/*   Updated: 2023/10/10 17:50:15 by bjorge-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *str)
 {
-	int i;
-	int sign;
-	int num;
+	int	i;
+	int	sign;
+	int	num;
 
 	i = 0;
 	sign = 1;
@@ -35,13 +35,8 @@ int	ft_atoi(const char *str)
 	}
 	while (ft_isdigit(str[i]))
 	{
-		num = num  * 10 + str[i++] - 48;
+		num = num * 10 + str[i] - 48;
+		i++;
 	}
 	return (num * sign);
 }
-/*int	main(void)
-{
-	char	a[25] = "  	+123456789bb567";
-	printf("%d\n", ft_atoi(a));
-	return (0);
-}*/

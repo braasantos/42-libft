@@ -6,7 +6,7 @@
 /*   By: bjorge-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:46:36 by bjorge-m          #+#    #+#             */
-/*   Updated: 2023/10/06 18:47:13 by bjorge-m         ###   ########.fr       */
+/*   Updated: 2023/10/10 17:56:34 by bjorge-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t i;
+	size_t	i;
+
 	i = 0;
 	if (i == n) //se n for igual a zero significa que nao ha nada para comparar
 	{
@@ -26,8 +27,6 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]); //unsigned char para garantir que a difrenca seja interpretada correctamente
 }
-
-
 /*int main() {
     const char *str1 = "apple";
     const char *str2 = "apple";
