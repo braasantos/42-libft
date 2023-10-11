@@ -1,6 +1,6 @@
 #include "libft.h"
 
-static int ft_getnbr(int n )
+static int ft_getnbr(long n )
 {
   int count;
   count = 0;
@@ -13,7 +13,7 @@ static int ft_getnbr(int n )
   }
   return (count);
 }
-int ft_negative(int n)
+static int ft_negative(long n)
 {
   int neg_len;
   if (n < 0)
@@ -27,7 +27,7 @@ int ft_negative(int n)
   }
   return (neg_len);
 }
-char *ft_convert(int n, char *str)
+static char *ft_convert(long n, char *str)
 {
   int i;
   i = ft_negative(n);
@@ -38,7 +38,7 @@ char *ft_convert(int n, char *str)
     str[0] = '-';
     n = -n;
   }
-  while (n != 0 && i != 0)
+  while (n > 0)
   {
     i--;
     str[i] = (n % 10) + '0';
@@ -49,19 +49,26 @@ char *ft_convert(int n, char *str)
 char *ft_itoa(int n)
 {
   char *mlc;
+  long nbr;
   int len_nbr;
-  len_nbr = ft_negative(n);
-  mlc = (char *)ft_calloc(((len_nbr + 1)), sizeof(char));
+
+  nbr = n;
+  len_nbr = ft_negative(nbr);
+  mlc = (char *)ft_calloc((len_nbr + 1), sizeof(char));
   if (!mlc)
     return (NULL);
-  mlc = ft_convert(n, mlc);
+  mlc = ft_convert(nbr, mlc);
   mlc[len_nbr] = '\0';
   return (mlc);
 }
-int main(void)
+/*
+int main(int argc, char **argv)
 {
-  int nbr = -345672;
-  printf("%s\n", ft_itoa(nbr));
+  if (argc != 2)
+    return (0);
+  char *num = ft_itoa(atoi(argv[1]));
+  printf("%s\n", num);
+  free(num);
   //printf("%i\n", ft_negative(nbr));
   return (0);
-}
+}*/

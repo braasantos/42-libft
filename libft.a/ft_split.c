@@ -24,6 +24,26 @@ static int ft_countword(char const *s, char c)
   return (count);
 }
 
+int ft_free(char **new_arr, int count)
+{
+  int i;
+  int flag;
+  i = 0;
+  flag = 0;
+  while (i < count)
+    if (!new_arr[i++])
+      flag = 1;
+  if (flag)
+  {
+    i = 0;
+    while(i < count)
+      free(new_arr[i++]);
+    free(new_arr);
+    return (0);
+  }
+  return (1);
+}
+
 static char **ft_putwords(char **new, char const *s, char c)
 {
   char **newarr;
@@ -42,16 +62,6 @@ static char **ft_putwords(char **new, char const *s, char c)
       if (!flag)
       {
         newarr[count] = ft_substr(s, 0, ft_strchr(s, c) - s);
-        if (!newarr[count])
-        {
-          while (count >= 0)
-          {
-              free(newarr[count--]);
-              free(newarr);
-          }
-          return (NULL);
-        }
-          
         flag = 1;
         count++;
       }
@@ -70,14 +80,16 @@ char **ft_split(char const *s, char c)
   if (!s)
     return (NULL);
   count = ft_countword(s, c);
-  new_arr = (char **)malloc((count + 1)* sizeof(char *));
+  new_arr = (char **)ft_calloc((count + 1), sizeof(char *));
   if (!new_arr)
     return (NULL);
   ft_putwords(new_arr, s, c);
+  if (!ft_free(new_arr, count))
+    return (NULL);
   return (new_arr);
 }
 
-int main(void)
+/*int main(void)
 {
     char const *s = "isso e um teste para ver se a split funciona";
     char c = ' ';
@@ -94,4 +106,4 @@ int main(void)
     }
 
     return 0;
-}
+}*/
