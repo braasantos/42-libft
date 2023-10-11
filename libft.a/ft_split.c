@@ -29,7 +29,7 @@ static char **ft_putwords(char **new, char const *s, char c)
   char **newarr;
   int flag;
   int count;
-  newarr = new;
+  newarr = new; 
   flag = 0;
   count = 0;
   while (*s)
@@ -43,7 +43,15 @@ static char **ft_putwords(char **new, char const *s, char c)
       {
         newarr[count] = ft_substr(s, 0, ft_strchr(s, c) - s);
         if (!newarr[count])
+        {
+          while (count >= 0)
+          {
+              free(newarr[count--]);
+              free(newarr);
+          }
           return (NULL);
+        }
+          
         flag = 1;
         count++;
       }
@@ -57,6 +65,7 @@ static char **ft_putwords(char **new, char const *s, char c)
 char **ft_split(char const *s, char c)
 {
   char **new_arr;
+  int i;
   int count;
   if (!s)
     return (NULL);
@@ -68,7 +77,7 @@ char **ft_split(char const *s, char c)
   return (new_arr);
 }
 
-/*int main(void)
+int main(void)
 {
     char const *s = "isso e um teste para ver se a split funciona";
     char c = ' ';
@@ -85,4 +94,4 @@ char **ft_split(char const *s, char c)
     }
 
     return 0;
-}*/
+}
