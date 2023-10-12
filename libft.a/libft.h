@@ -1,10 +1,20 @@
-#ifndef FT_H
-#define FT_H
+#ifndef LIBFT_H
+# define LIBFT_H
 
-#include <unistd.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h> //apagar
+# include <string.h>
+# include <stdlib.h>
+
+///////// --STRUCT-- ////////////
+
+typedef struct   s_list
+{
+  void          *content;
+  struct s_list *next;
+}                t_list;
+
+///////////////////////////////
 
 // PART ONE
 int     ft_isdigit(int c);
@@ -44,11 +54,6 @@ void ft_putstr_fd(char *s, int fd);
 void ft_putendl_fd(char *s, int fd);
 void ft_putnbr_fd(int n, int fd);
 
-typedef struct   s_list
-{
-  void          *content;
-  struct s_list *next;
-}                t_list;
 
 //BONUS PART
 t_list  *ft_lstnew(void *content);

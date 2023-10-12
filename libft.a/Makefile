@@ -61,11 +61,14 @@ RM = rm -f
 %.o : %.c 
 	$(CC) $(FLAGS) -c $< -o $@
 
+all: $(NAME)
+
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 	cc main.c $(NAME)
 
-all: $(NAME)
+bonus: $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 clean:
 	$(RM) $(OBJS)

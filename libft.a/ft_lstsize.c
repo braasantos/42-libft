@@ -2,7 +2,7 @@
 
 int ft_lstsize(t_list *lst)
 {
-  int i;
+  int i; // se der erro mudar para size_t
   i = 0;
   while (lst)
   {
