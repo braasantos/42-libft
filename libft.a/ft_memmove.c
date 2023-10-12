@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bjorge-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bjorge-m <bjorge-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:41:24 by bjorge-m          #+#    #+#             */
-/*   Updated: 2023/10/06 18:54:21 by bjorge-m         ###   ########.fr       */
+/*   Updated: 2023/10/12 16:55:51 by bjorge-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,27 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t	i;
-	unsigned char		*ptr1;
-	const unsigned char	*ptr2;
-	unsigned char		temp;
+	size_t			i;
 
-	ptr1 = dest;
-	ptr2 = src;
+	if (!dest && !src)
+		return (NULL);
 	i = 0;
-	if (!ptr1 && !ptr2) // veerifica se são nulos 
-	{
-		return (ptr1);
-	}
-	if (ptr1 > ptr2) // serve para ver se o dest está depois da src
+	if (dest > src)
 	{
 		while (i < n)
 		{
-			ptr1[n - 1]= ptr2[n - 1];
-			n--; // copia a data ao contrario para evitar escrever por cima
+			*((char *)dest + n - 1) = *((char *)src + n - 1);
+			n--;
 		}
 	}
-		else 
+	else
+	{
+		while (i < n)
 		{
-			while (i < n)
-			{
-				ptr1[i] = ptr2[i];
-				i++;
-			}
+			*((char *)dest + i) = *((char *)src + i);
+			i++;
 		}
+	}
 	return (dest);
 }
 

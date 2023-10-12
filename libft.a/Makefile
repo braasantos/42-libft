@@ -1,4 +1,4 @@
-##VARIAVEIS
+#---------------VARIAVEIS-----------#
 NAME = libft.a
 
 SRCS = ft_isdigit.c \
@@ -34,49 +34,48 @@ SRCS = ft_isdigit.c \
 	ft_putchar_fd.c \
 	ft_putstr_fd.c \
 	ft_putendl_fd.c \
-	ft_putnbr_fd.c \
-	t_list *ft_lstnew.c \
-	void ft_lstadd_front.c
-	int ft_lstsize.c \
-	t_list *ft_lstlast.c \
-	void ft_lstadd_back. c\
-	void ft_lstdelone.c \
-	void ft_lstclear.c \
-	void ft_lstiter.c \
-	t_list *ft_lstmap.c \
+	ft_putnbr_fd.c 
 
+BONUS = ft_lstnew.c \
+	ft_lstadd_front.c \
+	ft_lstsize.c \
+	ft_lstlast.c \
+	ft_lstadd_back.c\
+	ft_lstdelone.c \
+	ft_lstclear.c \
+	ft_lstiter.c \
+	ft_lstmap.c 
+
+HEADER = libft.h
 
 OBJS = $(SRCS:.c=.o)
-
-CC = gcc
-
+OBJSB = $(BONUS:.c=.o)
+CC = cc
 CFLAGS = -Wall -Werror -Wextra 
-
 COMPLIER = $(CC) $(CFLAGS)
-
 RM = rm -f
-
-##$(NAME): $(OBJS)
-##	$(COMPLIER) main.c $(OBJS)
-%.o : %.c 
-	$(CC) $(FLAGS) -c $< -o $@
-
+#------------REGRAS--------------#
+#compila o projeto
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
-	cc main.c $(NAME)
+%.o : %.c 
+	$(COMPLIER) -c $< -o $@
 
-bonus: $(OBJS)
+$(NAME): $(OBJS) $(HEADER)
 	ar rcs $(NAME) $(OBJS)
 
+#limpa os arquivos criados na compilacao
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(OBJSB)
 
+#limpa os arquivos criados e mas tambem a biblioteca estatica
 fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
 
+bonus: $(OBJS) $(OBJSB)
+	ar rcs $(NAME) $(OBJSB) $(OBJS)
+
 .PHONY: all clean fclean re
-.SILENT:
+# .SILENT:

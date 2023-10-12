@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bjorge-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bjorge-m <bjorge-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:40:43 by bjorge-m          #+#    #+#             */
-/*   Updated: 2023/10/10 18:09:42 by bjorge-m         ###   ########.fr       */
+/*   Updated: 2023/10/12 16:17:53 by bjorge-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,12 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t	i;
-	unsigned	char *ptr;
-	const unsigned	char *ptr2;
+	size_t			i;
+	unsigned char	*ptr;
+	unsigned char	*ptr2;
 
-	ptr = dest;
-	ptr2 = src;
-/* src and dest pointers are treated as
- 	unsigned char pointers to ensure that the 
- 	copying works correctly in all cases,
-  especially when copying binary data.*/
+	ptr = (unsigned char *)dest;
+	ptr2 = (unsigned char *)src;
 	i = 0;
 	if (!ptr && !ptr2)
 		return (0);
