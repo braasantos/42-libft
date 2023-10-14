@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bjorge-m <bjorge-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 18:19:06 by bjorge-m          #+#    #+#             */
-/*   Updated: 2023/10/12 19:24:34 by bjorge-m         ###   ########.fr       */
+/*   Created: 2023/10/06 18:33:55 by bjorge-m          #+#    #+#             */
+/*   Updated: 2023/10/12 19:57:12 by bjorge-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+int	ft_atoi(const char *nptr)
 {
-	t_list	*curr;
-	t_list	*head;
+	int	i;
+	int	sign;
+	int	num;
 
-	if (!lst || !f || !del)
-		return (NULL);
-
-		
-	head = NULL;
-	while (lst)
+	i = 0;
+	sign = 1;
+	num = 0;
+	while ((nptr[i] >= 9 && nptr[i] <= 13) || (nptr[i] == 32))
+		i++;
+	if (nptr[i] == 45 || nptr[i] == 43)
 	{
-		curr = ft_lstnew(lst->content);
-		if (!curr)
+		if (nptr[i] == 45)
 		{
-			ft_lstclear(&head, del);
-			return (NULL);
+			sign = -1;
 		}
-		curr->content = (f)(lst->content);
-		ft_lstadd_back(&head, curr);
-		lst = lst->next;
+		i++;
 	}
-	return (head);
+	while (ft_isdigit(nptr[i]))
+	{
+		num = num * 10 + nptr[i] - 48;
+		i++;
+	}
+	return (num * sign);
 }
